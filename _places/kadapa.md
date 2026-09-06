@@ -6,6 +6,7 @@ projects:
   - solar-biomass-dryer
   - children-for-children
   - pneumatic-exoskeleton
+  - bladesmithing
 ---
 
 _Placeholder — the content agent describes what Kadapa district is to the work:

@@ -86,7 +86,7 @@ title: "Sentence-case project name"
 slug: my-project              # must equal the filename
 org: "Organisation"
 role: "Your role"             # null for personal work
-status: in-service            # in-service | in-build | archived | worked-on-site
+status: in-service            # in-service | in-build | ongoing | archived | worked-on-site
 place: "Town, region"
 coords: [14.47, 78.82]        # [lat, lon]; lon negative for west
 dates: "Aug 2021 – Mar 2023"
@@ -106,7 +106,11 @@ Two fields carry the most weight and the layout gives them prominence:
   months" reads very differently from a founder line. Be precise; one inflated
   entry makes a reader discount all of them.
 - **`status`** — `in-build` is not `in-service`. Label honestly so the deployed
-  entries read as trustworthy.
+  entries read as trustworthy. The values: `in-service` (deployed and running),
+  `in-build` (being built, not yet deployed), `ongoing` (a continuing practice
+  that is neither deployed nor archived), `archived` (finished, not maintained),
+  `worked-on-site` (a role at someone else's site). Each has a status-tag style
+  in `main.css`.
 
 ### Project body structure
 

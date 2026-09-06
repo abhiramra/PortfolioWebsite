@@ -349,6 +349,7 @@ a:focus-visible {
 }
 .tag-in-service { color: var(--ink); border-color: var(--ink-soft); }
 .tag-in-build   { color: var(--mark); border-color: var(--mark-soft); }
+.tag-ongoing    { color: var(--ink-soft); border-color: var(--ink-soft); }
 .tag-archived   { color: var(--ink-faint); }
 .tag-worked-on-site { color: var(--ink-soft); }
 
