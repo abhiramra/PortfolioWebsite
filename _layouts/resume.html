@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<div class="resume">
+
+  <header class="resume-head">
+    <h1>{{ site.author }}</h1>
+    <p class="role">{{ page.role | default: "Mechanical engineer" }}</p>
+    <p class="contactline">
+      {{ site.contact.email }} &nbsp;·&nbsp; {{ site.contact.phone }} &nbsp;·&nbsp;
+      {{ site.contact.linkedin | remove: 'https://www.' | remove: 'https://' }}
+    </p>
+    <a class="resume-download" href="{{ site.baseurl }}{{ site.resume_pdf }}">Download PDF résumé</a>
+  </header>
+
+  <!-- Transcribed faithfully from the supplied PDF by the content agent.
+       Section frame and the entry markup (mono dates, right column) live here;
+       entries live in resume.md. -->
+  {{ content }}
+
+  <div class="work-foot">
+    <a class="back-link" href="{{ site.baseurl }}/">← back to the map</a>
+  </div>
+
+</div>

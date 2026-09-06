@@ -1,0 +1,88 @@
+---
+layout: default
+---
+{% assign lat = page.coords[0] %}{% assign lon = page.coords[1] %}
+<article class="project">
+
+  <div class="project-head">
+    <h1>{{ page.title }}</h1>
+    {% if page.org %}<p class="project-sub">{{ page.org }}</p>{% endif %}
+  </div>
+
+  <!-- Mono metadata block. Role and status carry the most weight. -->
+  <dl class="meta-block">
+    <div class="meta-item lead">
+      <dt>Role</dt>
+      <dd>{% if page.role and page.role != "—" %}{{ page.role }}{% else %}<span class="mono" style="color:var(--ink-faint)">not a role — personal work</span>{% endif %}</dd>
+    </div>
+    <div class="meta-item lead">
+      <dt>Status</dt>
+      <dd><span class="tag tag-{{ page.status }}">{{ page.status | replace: '-', ' ' }}</span></dd>
+    </div>
+    <div class="meta-item">
+      <dt>Organisation</dt>
+      <dd>{{ page.org }}</dd>
+    </div>
+    <div class="meta-item">
+      <dt>Dates</dt>
+      <dd class="mono">{{ page.dates }}</dd>
+    </div>
+    <div class="meta-item">
+      <dt>Place</dt>
+      <dd>{{ page.place }}</dd>
+    </div>
+    {% if page.coords %}
+    <div class="meta-item">
+      <dt>Coordinates</dt>
+      <dd class="mono">{{ lat | remove: '-' }}° {% if lat < 0 %}S{% else %}N{% endif %}, {{ lon | remove: '-' }}° {% if lon < 0 %}W{% else %}E{% endif %}</dd>
+    </div>
+    {% endif %}
+    {% if page.scale %}
+    <div class="meta-item">
+      <dt>Scale</dt>
+      <dd>{{ page.scale }}</dd>
+    </div>
+    {% endif %}
+    {% if page.users %}
+    <div class="meta-item">
+      <dt>Users</dt>
+      <dd>{{ page.users }}</dd>
+    </div>
+    {% endif %}
+    {% if page.constraint %}
+    <div class="meta-item wide">
+      <dt>Constraint</dt>
+      <dd>{{ page.constraint }}</dd>
+    </div>
+    {% endif %}
+  </dl>
+
+  {% if page.hero %}
+  <figure class="hero">
+    <img src="{{ site.baseurl }}{{ page.hero }}" alt="{{ page.hero_alt | default: page.title }}">
+    {% if page.hero_caption %}<figcaption class="caption">{{ page.hero_caption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
+  <!-- Body: what it is · the problem and the constraint · what I did ·
+       what went wrong · gallery. Filled by the content agent. -->
+  <div class="prose">
+    {{ content }}
+  </div>
+
+  {% if page.links %}
+  <div class="links-out prose">
+    <h2>Links</h2>
+    <ul>
+      {% for l in page.links %}
+      <li><a href="{{ l.url }}"{% unless l.url contains site.url %} rel="noopener"{% endunless %}>{{ l.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <div class="work-foot">
+    <a class="back-link" href="{{ site.baseurl }}/">← back to the map</a>
+  </div>
+
+</article>

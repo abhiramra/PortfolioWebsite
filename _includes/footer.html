@@ -1,0 +1,22 @@
+<footer class="footer" id="contact">
+  <div class="wrap footer-inner">
+    <p class="footer-name">{{ site.author }}</p>
+    <dl class="contact">
+      <div class="contact-row">
+        <dt class="mono-label">Email</dt>
+        <dd><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a></dd>
+      </div>
+      <div class="contact-row">
+        <dt class="mono-label">Phone</dt>
+        <dd><a href="tel:{{ site.contact.phone | remove: ' ' }}">{{ site.contact.phone }}</a></dd>
+      </div>
+      <div class="contact-row">
+        <dt class="mono-label">LinkedIn</dt>
+        <dd><a href="{{ site.contact.linkedin }}" rel="me noopener">{{ site.contact.linkedin | remove: 'https://www.' | remove: 'https://' }}</a></dd>
+      </div>
+    </dl>
+    <p class="footer-note mono">
+      Résumé · <a href="{{ site.baseurl }}{{ site.resume_pdf }}">PDF</a> · <a href="{{ site.baseurl }}/resume/">web</a>
+    </p>
+  </div>
+</footer>

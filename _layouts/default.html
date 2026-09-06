@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <a class="masthead-name" href="{{ site.baseurl }}/">{{ site.title }}</a>
+      <nav class="masthead-nav" aria-label="Primary">
+        <a href="{{ site.baseurl }}/">Map</a>
+        <a href="{{ site.baseurl }}/resume/">Résumé</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="main">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+</body>
+</html>

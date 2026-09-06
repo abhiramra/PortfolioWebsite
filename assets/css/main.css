@@ -1,0 +1,513 @@
+/* =========================================================================
+   Abhiram Rachamadugu — portfolio
+   Design system: antique survey map. Parchment, sepia ink, serif.
+   Mid-century topographic sheet / colonial district map — precise, printed.
+   No JavaScript. No dark mode (an old map is a light object).
+   ========================================================================= */
+
+/* --- Tokens ------------------------------------------------------------- */
+:root {
+  /* Palette — --mark is the only colour that carries emphasis. Use sparingly. */
+  --paper:      #F4EDDD;   /* page background            */
+  --paper-deep: #EBE0C9;   /* land fill, cards           */
+  --paper-edge: #DCCDB0;   /* hairlines, graticule       */
+  --ink:        #3A3129;   /* body text, coastlines      */
+  --ink-soft:   #6B5D4C;   /* secondary text, labels     */
+  --ink-faint:  #9A8B76;   /* captions, coordinates      */
+  --rule:       #C9B996;   /* borders, dividers          */
+  --mark:       #9E3B22;   /* pins, links, accents       */
+  --mark-soft:  #C4795F;   /* pin hover, deployment pins */
+  --sea:        #E3E5DC;   /* water                      */
+
+  --serif: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Palatino,
+           Georgia, "Times New Roman", serif;
+  --mono:  "Cutive Mono", ui-monospace, "Courier New", Courier, monospace;
+
+  --measure: 45rem;   /* 720px — prose column          */
+  --map-max: 1000px;  /* map may run wider than prose  */
+  --gap: 1.7rem;
+
+  --fs-body: 17px;
+  --lh-body: 1.7;
+}
+
+/* --- Reset -------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-feature-settings: "liga", "kern";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+figure { margin: 0; }
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.5rem 0;
+}
+
+/* --- Typography — sentence case everywhere ------------------------------ */
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0 0 0.6em;
+  letter-spacing: 0.005em;
+}
+h1 { font-size: 2.35rem; font-weight: 500; }
+h2 { font-size: 1.55rem; margin-top: 2.2em; }
+h3 { font-size: 1.2rem;  margin-top: 1.8em; }
+h4 { font-size: 1rem; text-transform: none; }
+p, ul, ol, dl, blockquote { margin: 0 0 1.2rem; }
+ul, ol { padding-left: 1.3rem; }
+li { margin: 0.25rem 0; }
+strong { font-weight: 600; }
+em { font-style: italic; }
+small { font-size: 0.8rem; }
+
+blockquote {
+  margin-left: 0;
+  padding: 0.2rem 0 0.2rem 1.3rem;
+  border-left: 2px solid var(--rule);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* Links: text stays ink, the underline carries the one accent colour.
+   Nowhere else on a content page should red appear except map pins. */
+a { color: var(--ink); text-decoration: none; }
+.prose a,
+.contact a,
+.linklist a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--mark);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+  transition: color 0.15s ease;
+}
+.prose a:hover,
+.contact a:hover,
+.linklist a:hover { color: var(--mark); }
+a:focus-visible {
+  outline: 2px solid var(--mark);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+/* --- Mono metadata ------------------------------------------------------ */
+.mono { font-family: var(--mono); }
+.mono-label {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.66rem;
+  color: var(--ink-faint);
+}
+.caption {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  line-height: 1.5;
+}
+
+/* --- Layout scaffolding ------------------------------------------------- */
+.wrap { max-width: var(--measure); margin: 0 auto; padding: 0 1.4rem; }
+.wrap-wide { max-width: var(--map-max); margin: 0 auto; padding: 0 1.4rem; }
+.main { min-height: 60vh; padding: 2.6rem 0 3rem; }
+.prose { max-width: var(--measure); margin: 0 auto; padding: 0 1.4rem; }
+.prose > * + h2 { margin-top: 2.4em; }
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--ink); color: var(--paper);
+  padding: 0.6rem 1rem; z-index: 20;
+  font-family: var(--mono); font-size: 0.8rem;
+}
+.skip-link:focus { left: 0; }
+
+/* --- Masthead ----------------------------------------------------------- */
+.masthead {
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+.masthead-inner {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 1rem; padding-top: 1rem; padding-bottom: 1rem;
+  max-width: var(--map-max);
+}
+.masthead-name {
+  font-size: 1.15rem; font-weight: 600; letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.masthead-nav { display: flex; gap: 1.3rem; }
+.masthead-nav a {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+.masthead-nav a:hover { color: var(--mark); border-bottom-color: var(--mark); }
+
+/* --- Home: hero + statement -------------------------------------------- */
+.home-head { text-align: center; padding: 0.5rem 0 1.6rem; }
+.home-head h1 { font-size: 2.6rem; margin-bottom: 0.15em; }
+.home-head .tagline {
+  font-style: italic; color: var(--ink-soft);
+  font-size: 1.15rem; margin: 0;
+}
+.statement {
+  max-width: 42rem; margin: 0 auto; text-align: center;
+  font-size: 1.18rem; line-height: 1.6; color: var(--ink);
+}
+.statement .placeholder { color: var(--ink-faint); font-style: italic; }
+
+/* --- Map wrapper -------------------------------------------------------- */
+.map-wrap {
+  max-width: var(--map-max);
+  margin: 1.4rem auto 0.6rem;
+  padding: 0 1.4rem;
+}
+.map-figure { margin: 0; }
+.map {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--paper);
+}
+.map-caption {
+  margin: 0.6rem auto 0;
+  max-width: var(--measure);
+  text-align: center;
+}
+
+/* --- Map SVG: framing --------------------------------------------------- */
+.panel-title {
+  font-family: var(--serif); font-style: italic;
+  font-size: 15px; fill: var(--ink);
+}
+.inset-title {
+  font-family: var(--serif); font-style: italic;
+  font-size: 11px; fill: var(--ink-soft);
+  paint-order: stroke; stroke: var(--paper); stroke-width: 2.6px;
+}
+.neat-outer { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; }
+.neat-inner { fill: none; stroke: var(--ink-soft); stroke-width: 0.6; }
+.inset-neat-outer { fill: none; stroke: var(--ink-soft); stroke-width: 1.1; }
+.inset-neat-inner { fill: none; stroke: var(--ink-soft); stroke-width: 0.5; }
+.sea  { fill: var(--sea); }
+.land { fill: var(--paper-deep); stroke: var(--ink-soft); stroke-width: 0.5;
+        stroke-linejoin: round; }
+.grat { fill: none; stroke: var(--paper-edge); stroke-width: 0.5; }
+.champ { fill: var(--paper); stroke: var(--ink); stroke-width: 0.9;
+         stroke-linejoin: round; }
+
+/* Degree ticks + scale bar — mono, period-correct */
+.tick {
+  font-family: var(--mono); font-size: 8.5px; fill: var(--ink-faint);
+}
+.tick-lon { text-anchor: middle; }
+.tick-lat { text-anchor: end; }
+.scale-line { stroke: var(--ink-soft); stroke-width: 1; }
+.scale-tick { stroke: var(--ink-soft); stroke-width: 1; }
+.scale-label { font-family: var(--mono); font-size: 8px; fill: var(--ink-soft);
+               text-anchor: middle; }
+
+/* Cartographic labels: italic serif for regions, roman serif for settlements */
+.lbl-region {
+  font-family: var(--serif); font-style: italic;
+  font-size: 12.5px; fill: var(--ink-soft);
+  letter-spacing: 0.04em; text-anchor: middle;
+  paint-order: stroke; stroke: var(--paper); stroke-width: 2.4px;
+}
+.lbl-place {
+  font-family: var(--serif); font-size: 12.5px; fill: var(--ink);
+  paint-order: stroke; stroke: var(--paper); stroke-width: 2.6px;
+}
+.lbl-deploy {
+  font-family: var(--mono); font-size: 8.5px; fill: var(--ink-soft);
+  paint-order: stroke; stroke: var(--paper); stroke-width: 2.4px;
+}
+
+/* Inset locator + leader lines */
+.locator { fill: none; stroke: var(--ink-soft); stroke-width: 0.8;
+           stroke-dasharray: 3 2; }
+.leader  { stroke: var(--ink-soft); stroke-width: 0.5; stroke-dasharray: 2 2; }
+
+/* --- Map SVG: pins ------------------------------------------------------ */
+.pin { cursor: pointer; }
+.pin circle { transition: transform 0.15s ease, fill 0.15s ease,
+                          stroke 0.15s ease; }
+.pin text  { transition: fill 0.15s ease; }
+
+/* Primary pin — worked / built here: filled circle */
+.pin-lg circle.dot {
+  fill: var(--mark); stroke: var(--paper); stroke-width: 1;
+  transform-box: fill-box; transform-origin: center;
+}
+.pin-lg:hover circle.dot,
+.pin-lg:focus-visible circle.dot { transform: scale(1.32); fill: var(--mark); }
+.pin-lg:hover .lbl-place,
+.pin-lg:focus-visible .lbl-place { fill: var(--mark); }
+
+/* Deployment pin — where the work ended up: small open circle */
+.pin-sm circle.dot {
+  fill: var(--paper); stroke: var(--mark-soft); stroke-width: 1.3;
+  transform-box: fill-box; transform-origin: center;
+}
+.pin-sm:hover circle.dot,
+.pin-sm:focus-visible circle.dot { transform: scale(1.35); stroke: var(--mark); }
+.pin-sm:hover .lbl-deploy,
+.pin-sm:focus-visible .lbl-deploy { fill: var(--mark); }
+
+/* Deployment area — a distribution, not a point */
+.deploy-area {
+  fill: none; stroke: var(--mark-soft); stroke-width: 1;
+  stroke-dasharray: 4 3;
+  transform-box: fill-box; transform-origin: center;
+}
+.pin-area:hover .deploy-area,
+.pin-area:focus-visible .deploy-area { stroke: var(--mark); }
+.pin-area:hover .lbl-deploy,
+.pin-area:focus-visible .lbl-deploy { fill: var(--mark); }
+
+/* Keyboard focus — visible ring around the whole pin group.
+   Order matters: drop the default ring first, then re-add it for :focus-visible
+   only, so keyboard focus (which matches both :focus and :focus-visible) keeps
+   the ring while a mouse click (which matches only :focus) does not. */
+.pin:focus { outline: none; }
+.pin:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- Home: stat strip --------------------------------------------------- */
+.stats {
+  max-width: var(--map-max);
+  margin: 2.4rem auto 0;
+  padding: 1.3rem 1.4rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+.stat .num {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.9rem;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.stat .lab {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  margin-top: 0.35rem;
+}
+
+/* --- Home: plain text index of all work -------------------------------- */
+.index-block { max-width: var(--measure); margin: 3rem auto 0; padding: 0 1.4rem; }
+.index-block h2 { font-size: 1.35rem; margin-bottom: 0.2em; }
+.index-note { color: var(--ink-soft); font-style: italic; margin-bottom: 1.4rem; }
+.linklist { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
+.linklist li { margin: 0; border-bottom: 1px solid var(--rule); }
+.linklist a {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.8rem;
+  padding: 0.7rem 0.2rem; text-decoration: none;
+}
+.linklist a:hover { background: var(--paper-deep); }
+.linklist .li-title { font-size: 1.08rem; color: var(--ink); flex: 1 1 auto; }
+.linklist a:hover .li-title { color: var(--mark); }
+.linklist .li-org { color: var(--ink-soft); font-style: italic; font-size: 0.95rem; }
+.linklist .li-meta {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-faint); white-space: nowrap;
+}
+
+/* Status tag chips (mono) */
+.tag {
+  font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-soft);
+  border: 1px solid var(--rule); border-radius: 2px;
+  padding: 0.12rem 0.4rem; white-space: nowrap;
+}
+.tag-in-service { color: var(--ink); border-color: var(--ink-soft); }
+.tag-in-build   { color: var(--mark); border-color: var(--mark-soft); }
+.tag-archived   { color: var(--ink-faint); }
+.tag-worked-on-site { color: var(--ink-soft); }
+
+/* --- Project layout ----------------------------------------------------- */
+.project-head { max-width: var(--measure); margin: 0 auto; padding: 0 1.4rem; }
+.project-head h1 { margin-bottom: 0.15em; }
+.project-sub { font-style: italic; color: var(--ink-soft); font-size: 1.15rem;
+               margin-top: 0; }
+
+/* Mono metadata block — role and status get prominence */
+.meta-block {
+  max-width: var(--measure); margin: 1.4rem auto; padding: 1rem 1.4rem;
+  border: 1px solid var(--rule);
+  background: var(--paper-deep);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem 1.6rem;
+}
+.meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
+.meta-item dt { /* label */
+  font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.meta-item dd { margin: 0; font-size: 1rem; color: var(--ink); }
+.meta-item.wide { grid-column: 1 / -1; }
+.meta-item.lead dd { font-size: 1.15rem; font-weight: 500; }  /* role, status */
+
+.hero { max-width: var(--map-max); margin: 1.8rem auto; padding: 0 1.4rem; }
+.hero img { width: 100%; border: 1px solid var(--rule); }
+.hero figcaption { margin-top: 0.5rem; text-align: center; }
+
+/* Gallery */
+.gallery {
+  max-width: var(--map-max); margin: 1.6rem auto; padding: 0 1.4rem;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.gallery figure { border: 1px solid var(--rule); background: var(--paper-deep); }
+.gallery img { width: 100%; }
+.gallery figcaption { padding: 0.4rem 0.6rem; }
+
+/* Video poster — static image linking out, never an embed */
+.video-poster { position: relative; display: block; border: 1px solid var(--rule); }
+.video-poster::after {
+  content: "▶ watch on youtube";
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--paper); color: var(--ink);
+  padding: 0.5rem 0.9rem; border: 1px solid var(--ink-soft);
+}
+
+/* Links-out block at the end of a project */
+.links-out { max-width: var(--measure); margin: 2.4rem auto 0; padding: 1.2rem 1.4rem 0;
+             border-top: 1px solid var(--rule); }
+.links-out ul { list-style: none; padding: 0; }
+.links-out li { margin: 0.4rem 0; }
+
+/* Prev/next / back nav */
+.work-foot { max-width: var(--measure); margin: 2.4rem auto 0; padding: 0 1.4rem; }
+.back-link { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em;
+             text-transform: uppercase; color: var(--ink-soft); }
+.back-link:hover { color: var(--mark); }
+
+/* --- Place layout ------------------------------------------------------- */
+.place-head { max-width: var(--measure); margin: 0 auto; padding: 0 1.4rem; }
+.place-coords { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-faint);
+                letter-spacing: 0.06em; margin-top: 0.2rem; }
+.place-projects { max-width: var(--measure); margin: 1.6rem auto 0; padding: 0 1.4rem; }
+
+/* --- Résumé layout — a printed record ---------------------------------- */
+.resume { max-width: 48rem; margin: 0 auto; padding: 0 1.4rem; }
+.resume-head {
+  text-align: center; padding-bottom: 1rem; margin-bottom: 1.4rem;
+  border-bottom: 2px solid var(--ink-soft);
+}
+.resume-head h1 { margin-bottom: 0.1em; }
+.resume-head .role { font-style: italic; color: var(--ink-soft); font-size: 1.15rem; }
+.resume-head .contactline { font-family: var(--mono); font-size: 0.72rem;
+  color: var(--ink-soft); letter-spacing: 0.04em; margin-top: 0.6rem; }
+.resume-download {
+  display: inline-block; margin-top: 0.9rem;
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink-soft); color: var(--ink);
+  padding: 0.5rem 1rem; text-decoration: none;
+}
+.resume-download:hover { background: var(--ink); color: var(--paper); }
+
+.resume section { margin: 2rem 0; }
+.resume section > h2 {
+  font-size: 0.72rem; font-family: var(--mono); text-transform: uppercase;
+  letter-spacing: 0.2em; color: var(--ink-soft); font-weight: 400;
+  margin: 0 0 1rem; padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--rule);
+}
+/* Ruled entry: serif body left, mono dates in a right-hand column */
+.entry { display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 1.4rem;
+         margin-bottom: 1.4rem; }
+.entry-title { font-weight: 600; font-size: 1.08rem; }
+.entry-org   { font-style: italic; color: var(--ink-soft); }
+.entry-dates { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint);
+               text-align: right; letter-spacing: 0.03em; white-space: nowrap; }
+.entry-place { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-faint);
+               text-align: right; }
+.entry-body { grid-column: 1 / -1; margin-top: 0.3rem; }
+.entry-body ul { margin: 0.3rem 0; }
+
+/* --- Footer ------------------------------------------------------------- */
+.footer {
+  margin-top: 3.5rem;
+  border-top: 2px solid var(--ink-soft);
+  background: var(--paper-deep);
+  padding: 2.2rem 0 2.6rem;
+}
+.footer-inner { max-width: var(--measure); }
+.footer-name { font-size: 1.2rem; font-weight: 600; margin: 0 0 1rem; }
+.contact { margin: 0; }
+.contact-row { display: flex; gap: 1rem; align-items: baseline;
+               padding: 0.35rem 0; border-bottom: 1px solid var(--rule); }
+.contact-row dt { flex: 0 0 5.5rem; }
+.contact-row dd { margin: 0; }
+.footer-note { margin-top: 1.2rem; font-size: 0.7rem; color: var(--ink-faint);
+               letter-spacing: 0.06em; }
+.footer-note a { color: var(--ink-soft); text-decoration: underline;
+                 text-decoration-color: var(--rule); }
+.footer-note a:hover { color: var(--mark); }
+
+/* --- Responsive --------------------------------------------------------- */
+@media (max-width: 700px) {
+  :root { --fs-body: 16px; }
+  /* Three survey panels are unusable on a phone. Hide the interactive map
+     and let the plain text index below carry navigation. */
+  .map-wrap { display: none; }
+  .index-block { margin-top: 1.2rem; }
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 1.2rem 0.6rem; }
+  .meta-block { grid-template-columns: 1fr; }
+  .entry { grid-template-columns: 1fr; }
+  .entry-dates, .entry-place { text-align: left; }
+  .home-head h1 { font-size: 2.1rem; }
+  h1 { font-size: 2rem; }
+}
+@media (max-width: 420px) {
+  .wrap, .wrap-wide, .prose, .index-block, .stats,
+  .project-head, .meta-block, .place-head, .place-projects,
+  .resume, .footer-inner, .hero, .gallery { padding-left: 1.1rem; padding-right: 1.1rem; }
+  .stats { grid-template-columns: 1fr 1fr; }
+  .linklist a { padding: 0.8rem 0.2rem; }
+}
+
+/* --- Print -------------------------------------------------------------- */
+@media print {
+  .masthead-nav, .skip-link, .map-wrap { display: none; }
+  body { background: #fff; color: #000; }
+  a { color: #000; text-decoration: underline; }
+  .footer { background: none; }
+}
+
+/* Respect reduced motion — kill the pin transitions */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

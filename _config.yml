@@ -1,0 +1,60 @@
+# --- Site ---------------------------------------------------------------
+title: Abhiram Rachamadugu
+tagline: A map of where the work happened
+description: >-
+  A map-led portfolio of Abhiram Rachamadugu — mechanical engineering work
+  across metropolitan Bengaluru, rural Kadapa, a Tata Motors plant at
+  Nelamangala, engineering campuses in India, and Urbana-Champaign, Illinois.
+author: Abhiram Rachamadugu
+lang: en
+
+# --- URLs ---------------------------------------------------------------
+# Domain-agnostic. Leave both empty for a custom domain or a user/org page.
+# For a PROJECT page (username.github.io/repo-name) set:
+#   baseurl: "/repo-name"
+# Every internal link uses {{ site.baseurl }}, so this one value is the only
+# thing to change when the custom domain is purchased.
+baseurl: ""
+url: ""
+
+# --- Contact (footer only) ---------------------------------------------
+# PLACEHOLDERS — the content agent / owner replaces these with real values.
+# Nothing here is published until it is filled in.
+contact:
+  email: "REPLACE-with-email@example.com"
+  phone: "+91 00000 00000"
+  linkedin: "https://www.linkedin.com/in/REPLACE"
+  github: "https://github.com/REPLACE"
+resume_pdf: "/assets/Abhiram-Rachamadugu-Resume.pdf"
+
+# --- Build --------------------------------------------------------------
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+collections:
+  projects:
+    output: true
+    permalink: /work/:name/
+  places:
+    output: true
+    permalink: /place/:name/
+
+# Layouts applied automatically so collection files need no `layout:` field.
+defaults:
+  - scope: { path: "", type: "projects" }
+    values: { layout: project }
+  - scope: { path: "", type: "places" }
+    values: { layout: place }
+
+# Order the map/home list follows if a project omits `order`.
+sass:
+  style: compressed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .gitignore
