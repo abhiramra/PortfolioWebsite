@@ -402,6 +402,29 @@ a:focus-visible {
   padding: 0.5rem 0.9rem; border: 1px solid var(--ink-soft);
 }
 
+/* Body figures (project galleries) — editorial, full column width */
+.prose figure { margin: 1.8rem 0; }
+.prose figure img { width: 100%; display: block; }
+.prose figure > img { border: 1px solid var(--rule); }
+.prose figcaption {
+  margin-top: 0.5rem;
+  font-family: var(--mono); font-size: 0.72rem; line-height: 1.5;
+  color: var(--ink-faint);
+}
+
+/* Tables in prose (e.g. the bionic-arm materials table) */
+.prose table { width: 100%; border-collapse: collapse; margin: 1.6rem 0; }
+.prose th, .prose td {
+  text-align: left; vertical-align: top;
+  padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule);
+}
+.prose th {
+  font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-soft); font-weight: 400;
+  border-bottom: 1px solid var(--ink-soft);
+}
+.prose td { font-size: 0.97rem; }
+
 /* Links-out block at the end of a project */
 .links-out { max-width: var(--measure); margin: 2.4rem auto 0; padding: 1.2rem 1.4rem 0;
              border-top: 1px solid var(--rule); }

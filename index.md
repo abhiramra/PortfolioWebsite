@@ -28,10 +28,7 @@ permalink: /
 </section>
 
 <div class="statement">
-  <p><span class="placeholder">Three-sentence statement placeholder. There is no
-  separate about page — this paragraph carries that weight, so the content agent
-  writes here what the work is about, in the map's civilian register. Keep it to
-  three sentences.</span></p>
+  <p>I build hardware in places that make it hard — a forge dug into the ground in Kadapa, a bionic hand held under $200, a jet airframe laid up in a home lab. The constraint is usually the interesting part, because it decides the architecture long before any preference does. What is here is ten of those projects, including the parts that did not work.</p>
 </div>
 
 <section class="index-block">

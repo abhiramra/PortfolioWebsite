@@ -9,6 +9,4 @@ projects:
   - bladesmithing
 ---
 
-_Placeholder — the content agent describes what Kadapa district is to the work:
-the rural setting, the constraints of unit cost and no grid power, the scale of
-distribution. The list of work below is generated from the `projects` field._
+A semi-arid district in Rayalaseema, and the place where I had the most room to build. My grandparents' house, my grandmother's NGO for a client, and nobody telling me a thing was out of scope. Four projects here came out of it, and the range is the point: a simulation-driven agricultural product, a scholarship programme, an exoskeleton, and a forge dug into the ground.

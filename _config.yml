@@ -18,13 +18,14 @@ baseurl: "/PortfolioWebsite"
 url: "https://abhiramra.github.io"
 
 # --- Contact (footer only) ---------------------------------------------
-# PLACEHOLDERS — the content agent / owner replaces these with real values.
-# Nothing here is published until it is filled in.
+# Two phone numbers, per Abhiram. GitHub deliberately omitted (functional site
+# hosting, not a portfolio). Read by _includes/footer.html and _layouts/resume.html.
 contact:
-  email: "REPLACE-with-email@example.com"
-  phone: "+91 00000 00000"
-  linkedin: "https://www.linkedin.com/in/REPLACE"
-  github: "https://github.com/REPLACE"
+  email: abhiramra@gmail.com
+  phone_in: "+91 88008 26446"
+  phone_us: "+1 217 888 0449"
+  linkedin: https://www.linkedin.com/in/rachabhi/
+  location: Bengaluru, India / Urbana-Champaign, IL
 resume_pdf: "/assets/Abhiram-Rachamadugu-Resume.pdf"
 
 # --- Build --------------------------------------------------------------
@@ -58,3 +59,4 @@ exclude:
   - Gemfile.lock
   - vendor
   - .gitignore
+  - out               # cowork's staging output — incorporated, not published

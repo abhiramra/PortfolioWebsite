@@ -7,7 +7,7 @@ layout: default
     <h1>{{ site.author }}</h1>
     <p class="role">{{ page.role | default: "Mechanical engineer" }}</p>
     <p class="contactline">
-      {{ site.contact.email }} &nbsp;·&nbsp; {{ site.contact.phone }} &nbsp;·&nbsp;
+      {{ site.contact.email }} &nbsp;·&nbsp; {{ site.contact.phone_in }} &nbsp;·&nbsp;
       {{ site.contact.linkedin | remove: 'https://www.' | remove: 'https://' }}
     </p>
     <a class="resume-download" href="{{ site.baseurl }}{{ site.resume_pdf }}">Download PDF résumé</a>
