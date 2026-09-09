@@ -14,8 +14,8 @@ lang: en
 #   baseurl: "/repo-name"
 # Every internal link uses {{ site.baseurl }}, so this one value is the only
 # thing to change when the custom domain is purchased.
-baseurl: "/PortfolioWebsite"
-url: "https://abhiramra.github.io"
+baseurl: ""
+url: "https://abhiramra.net"
 
 # --- Contact (footer + résumé) -----------------------------------------
 # Two phone numbers, per Abhiram. Read by _includes/footer.html and
