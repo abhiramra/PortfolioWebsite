@@ -15,7 +15,9 @@ hero: "/assets/img/taiyo-aerospace/hero.jpg"
 hero_alt: "Front view render of the Vritra airframe: a fixed-wing aircraft with a blended fuselage and a dorsal inlet, on a black background."
 hero_caption: "Vritra, front view. The dorsal serpentine inlet feeds the turbine bay behind the payload volume."
 tags: ["fixed-wing UAV", "carbon fibre", "autonomy", "propulsion"]
-order: 1
+card_line: "A jet-powered autonomous aircraft for search and rescue, built in a home lab."
+card_image: /assets/img/taiyo-aerospace/card.jpg
+card_alt: "The full-scale Vritra airframe under construction on a workbench in an engineering lab."
 ---
 
 ## What it is

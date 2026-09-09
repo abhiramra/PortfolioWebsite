@@ -15,7 +15,9 @@ hero: "/assets/img/illini-autonomous-vehicles/hero.jpg"
 hero_alt: "Skyfall v1, a carbon-fibre plate quadrotor with exposed wiring, sitting on a grass sports field beside a painted line."
 hero_caption: "Skyfall v1, the carbon-fibre test mule. Every hour it flew produced training imagery for the detection model."
 tags: ["fixed-wing", "multirotor", "carbon fibre", "autonomy"]
-order: 2
+card_line: "Co-founded UIUC's autonomous drone team; I lead its fixed-wing airframes."
+card_image: /assets/img/illini-autonomous-vehicles/card.jpg
+card_alt: "A twin-boom fixed-wing UAV lifting off from a paved runway, grass and trees beyond."
 ---
 
 ## What it is

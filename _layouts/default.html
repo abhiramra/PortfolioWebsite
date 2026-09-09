@@ -3,20 +3,22 @@
 <head>
   {% include head.html %}
 </head>
-<body>
+<body{% if page.no_masthead %} class="is-home"{% endif %}>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  {% unless page.no_masthead %}
   <header class="masthead">
     <div class="wrap masthead-inner">
       <a class="masthead-name" href="{{ site.baseurl }}/">{{ site.title }}</a>
       <nav class="masthead-nav" aria-label="Primary">
-        <a href="{{ site.baseurl }}/">Map</a>
+        <a href="{{ site.baseurl }}/">Work</a>
         <a href="{{ site.baseurl }}/resume/">Résumé</a>
       </nav>
     </div>
   </header>
+  {% endunless %}
 
-  <main id="main" class="main">
+  <main id="main">
     {{ content }}
   </main>
 

@@ -1,6 +1,11 @@
 <footer class="footer" id="contact">
   <div class="wrap footer-inner">
-    <p class="footer-name">{{ site.author }}</p>
+
+    <div class="footer-lead">
+      <p class="footer-name">{{ site.author }}</p>
+      <p class="footer-tag mono">{{ site.tagline }}</p>
+    </div>
+
     <dl class="contact">
       <div class="contact-row">
         <dt class="mono-label">Email</dt>
@@ -8,19 +13,29 @@
       </div>
       <div class="contact-row">
         <dt class="mono-label">Phone</dt>
-        <dd><a href="tel:{{ site.contact.phone_in | remove: ' ' }}">{{ site.contact.phone_in }}</a> &nbsp;·&nbsp; <a href="tel:{{ site.contact.phone_us | remove: ' ' }}">{{ site.contact.phone_us }}</a></dd>
+        <dd>
+          <a href="tel:{{ site.contact.phone_in | remove: ' ' }}">{{ site.contact.phone_in }}</a>
+          <span class="sep">·</span>
+          <a href="tel:{{ site.contact.phone_us | remove: ' ' }}">{{ site.contact.phone_us }}</a>
+        </dd>
       </div>
       <div class="contact-row">
         <dt class="mono-label">LinkedIn</dt>
         <dd><a href="{{ site.contact.linkedin }}" rel="me noopener">{{ site.contact.linkedin | remove: 'https://www.' | remove: 'https://' }}</a></dd>
       </div>
       <div class="contact-row">
-        <dt class="mono-label">Location</dt>
-        <dd>{{ site.contact.location }}</dd>
+        <dt class="mono-label">GitHub</dt>
+        <dd><a href="{{ site.contact.github }}" rel="me noopener">{{ site.contact.github | remove: 'https://' }}</a></dd>
+      </div>
+      <div class="contact-row">
+        <dt class="mono-label">Résumé</dt>
+        <dd>
+          <a href="{{ site.baseurl }}{{ site.resume_pdf }}">PDF</a>
+          <span class="sep">·</span>
+          <a href="{{ site.baseurl }}/resume/">web</a>
+        </dd>
       </div>
     </dl>
-    <p class="footer-note mono">
-      Résumé · <a href="{{ site.baseurl }}{{ site.resume_pdf }}">PDF</a> · <a href="{{ site.baseurl }}/resume/">web</a>
-    </p>
+
   </div>
 </footer>

@@ -15,7 +15,8 @@ hero: "/assets/img/abb-tata-motors/hero.jpg"
 hero_alt: "A person in a white hard hat holding a teach pendant, standing beside a large orange ABB industrial robot on a factory floor with overhead cranes."
 hero_caption: "On the floor at Nelamangala, with a teach pendant."
 tags: ["industrial robotics", "spot welding", "assembly line design", "RobotStudio"]
-order: 6
+card_line: "Spot-welding robots and assembly lines on a Tata Motors plant floor."
+card_image: /assets/img/abb-tata-motors/card.jpg
 ---
 
 ## What it is

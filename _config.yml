@@ -1,10 +1,10 @@
 # --- Site ---------------------------------------------------------------
 title: Abhiram Rachamadugu
-tagline: A map of where the work happened
+tagline: "Mechanical engineering — robotics, autonomy, aerospace"
 description: >-
-  A map-led portfolio of Abhiram Rachamadugu — mechanical engineering work
-  across metropolitan Bengaluru, rural Kadapa, a Tata Motors plant at
-  Nelamangala, engineering campuses in India, and Urbana-Champaign, Illinois.
+  The portfolio of Abhiram Rachamadugu — mechanical engineering across
+  aerospace, autonomy, thermal systems, materials, manufacturing and
+  nonprofit operations. Ten projects, including the parts that did not work.
 author: Abhiram Rachamadugu
 lang: en
 
@@ -17,14 +17,15 @@ lang: en
 baseurl: "/PortfolioWebsite"
 url: "https://abhiramra.github.io"
 
-# --- Contact (footer only) ---------------------------------------------
-# Two phone numbers, per Abhiram. GitHub deliberately omitted (functional site
-# hosting, not a portfolio). Read by _includes/footer.html and _layouts/resume.html.
+# --- Contact (footer + résumé) -----------------------------------------
+# Two phone numbers, per Abhiram. Read by _includes/footer.html and
+# _layouts/resume.html.
 contact:
   email: abhiramra@gmail.com
   phone_in: "+91 88008 26446"
   phone_us: "+1 217 888 0449"
   linkedin: https://www.linkedin.com/in/rachabhi/
+  github: https://github.com/abhiramra
   location: Bengaluru, India / Urbana-Champaign, IL
 resume_pdf: "/assets/Abhiram-Rachamadugu-Resume.pdf"
 
@@ -38,18 +39,12 @@ collections:
   projects:
     output: true
     permalink: /work/:name/
-  places:
-    output: true
-    permalink: /place/:name/
 
-# Layouts applied automatically so collection files need no `layout:` field.
+# Layout applied automatically so collection files need no `layout:` field.
 defaults:
   - scope: { path: "", type: "projects" }
     values: { layout: project }
-  - scope: { path: "", type: "places" }
-    values: { layout: place }
 
-# Order the map/home list follows if a project omits `order`.
 sass:
   style: compressed
 
@@ -59,4 +54,5 @@ exclude:
   - Gemfile.lock
   - vendor
   - .gitignore
+  - tools             # image pipeline — build-time helper, not published
   - out               # cowork's staging output — incorporated, not published

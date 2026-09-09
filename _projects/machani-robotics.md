@@ -15,7 +15,9 @@ hero: "/assets/img/machani-robotics/hero.jpg"
 hero_alt: "A 5-axis mill cutting an aluminium block held in a vice on a rotary trunnion table, coolant spraying off the end mill."
 hero_caption: "Aluminium on the 5-axis, under flood coolant."
 tags: ["3D printing", "5-axis CNC", "shop floor"]
-order: 9
+card_line: "Six weeks on a robotics shop floor — 5-axis milling and a print farm."
+card_image: /assets/img/machani-robotics/card.jpg
+card_alt: "A multi-axis robot arm on a bench at the robotics shop, joints and wiring exposed."
 ---
 
 ## What it is

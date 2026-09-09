@@ -15,7 +15,9 @@ hero: "/assets/img/bladesmithing/hero.jpg"
 hero_alt: "A blade at forging heat, glowing dull orange-red, lying on a stone slab with a sledgehammer resting beside it."
 hero_caption: "A blade at heat on the stone slab that stands in for an anvil."
 tags: ["metallurgy", "heat-treatment", "fabrication"]
-order: 10
+card_line: "A forge dug into the ground in Kadapa, and the knives that come out of it."
+card_image: /assets/img/bladesmithing/card.jpg
+card_alt: "Three handmade kitchen knives with red wooden handles, blades polished, on a dark leather seat."
 ---
 
 ## What it is

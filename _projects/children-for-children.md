@@ -15,7 +15,9 @@ hero: "/assets/img/children-for-children/hero.jpg"
 hero_alt: "Abhiram speaking into a microphone beneath a banner reading 'Intensive coaching in mathematics for the students of Municipal High School (Main), Kadapa', with the Children for Children logo."
 hero_caption: "Launching the maths and computing coaching at Municipal High School (Main), Kadapa, September 2024."
 tags: ["fundraising", "programme design", "COVID-19 relief", "scholarships"]
-order: 4
+card_line: "A scholarship programme I run for children orphaned by the pandemic."
+card_image: /assets/img/children-for-children/card.jpg
+card_alt: "The maths coaching launch: Abhiram at a microphone and three school staff seated beneath the Children for Children banner."
 ---
 
 ## What it is

@@ -1,25 +1,30 @@
 ---
 layout: default
 ---
-<div class="resume">
+<div class="resume measure">
 
   <header class="resume-head">
-    <h1>{{ site.author }}</h1>
-    <p class="role">{{ page.role | default: "Mechanical engineer" }}</p>
-    <p class="contactline">
-      {{ site.contact.email }} &nbsp;·&nbsp; {{ site.contact.phone_in }} &nbsp;·&nbsp;
-      {{ site.contact.linkedin | remove: 'https://www.' | remove: 'https://' }}
+    <h1 class="resume-name">{{ site.author }}</h1>
+    <p class="resume-role mono">{{ page.role | default: "Mechanical engineer" }}</p>
+    <p class="resume-contact mono">
+      <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
+      <span class="sep">·</span>
+      <a href="tel:{{ site.contact.phone_in | remove: ' ' }}">{{ site.contact.phone_in }}</a>
+      <span class="sep">·</span>
+      <a href="{{ site.contact.linkedin }}" rel="me noopener">{{ site.contact.linkedin | remove: 'https://www.' | remove: 'https://' }}</a>
+      <span class="sep">·</span>
+      <a href="{{ site.contact.github }}" rel="me noopener">{{ site.contact.github | remove: 'https://' }}</a>
     </p>
     <a class="resume-download" href="{{ site.baseurl }}{{ site.resume_pdf }}">Download PDF résumé</a>
   </header>
 
-  <!-- Transcribed faithfully from the supplied PDF by the content agent.
-       Section frame and the entry markup (mono dates, right column) live here;
-       entries live in resume.md. -->
+  <!-- Transcribed faithfully from the supplied PDF. Section frame and entry
+       markup (mono dates, right column) are styled here; entries live in
+       resume.md. -->
   {{ content }}
 
   <div class="work-foot">
-    <a class="back-link" href="{{ site.baseurl }}/">← back to the map</a>
+    <a class="back-link" href="{{ site.baseurl }}/">← All work</a>
   </div>
 
 </div>

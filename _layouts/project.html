@@ -1,77 +1,74 @@
 ---
 layout: default
 ---
-{% assign lat = page.coords[0] %}{% assign lon = page.coords[1] %}
 <article class="project">
 
-  <div class="project-head">
-    <h1>{{ page.title }}</h1>
-    {% if page.org %}<p class="project-sub">{{ page.org }}</p>{% endif %}
-  </div>
+  <header class="project-head measure">
+    <h1 class="project-title">{{ page.title }}</h1>
 
-  <!-- Mono metadata block. Role and status carry the most weight. -->
-  <dl class="meta-block">
-    <div class="meta-item lead">
-      <dt>Role</dt>
-      <dd>{% if page.role and page.role != "—" %}{{ page.role }}{% else %}<span class="mono" style="color:var(--ink-faint)">not a role — personal work</span>{% endif %}</dd>
-    </div>
-    <div class="meta-item lead">
-      <dt>Status</dt>
-      <dd><span class="tag tag-{{ page.status }}">{{ page.status | replace: '-', ' ' }}</span></dd>
-    </div>
-    <div class="meta-item">
-      <dt>Organisation</dt>
-      <dd>{{ page.org }}</dd>
-    </div>
-    <div class="meta-item">
-      <dt>Dates</dt>
-      <dd class="mono">{{ page.dates }}</dd>
-    </div>
-    <div class="meta-item">
-      <dt>Place</dt>
-      <dd>{{ page.place }}</dd>
-    </div>
-    {% if page.coords %}
-    <div class="meta-item">
-      <dt>Coordinates</dt>
-      <dd class="mono">{{ lat | remove: '-' }}° {% if lat < 0 %}S{% else %}N{% endif %}, {{ lon | remove: '-' }}° {% if lon < 0 %}W{% else %}E{% endif %}</dd>
-    </div>
-    {% endif %}
-    {% if page.scale %}
-    <div class="meta-item">
-      <dt>Scale</dt>
-      <dd>{{ page.scale }}</dd>
-    </div>
-    {% endif %}
-    {% if page.users %}
-    <div class="meta-item">
-      <dt>Users</dt>
-      <dd>{{ page.users }}</dd>
-    </div>
-    {% endif %}
-    {% if page.constraint %}
-    <div class="meta-item wide">
-      <dt>Constraint</dt>
-      <dd>{{ page.constraint }}</dd>
-    </div>
-    {% endif %}
-  </dl>
+    <!-- Mono metadata. Role and status are the credibility-carrying fields and
+         lead the block; coordinates are intentionally not shown. -->
+    <dl class="meta-block">
+      <div class="meta-item meta-lead">
+        <dt>Role</dt>
+        <dd>{% if page.role %}{{ page.role }}{% else %}<span class="muted">Personal work</span>{% endif %}</dd>
+      </div>
+      <div class="meta-item meta-lead">
+        <dt>Status</dt>
+        <dd><span class="status">{{ page.status | replace: '-', ' ' }}</span></dd>
+      </div>
+      <div class="meta-item">
+        <dt>Organisation</dt>
+        <dd>{{ page.org }}</dd>
+      </div>
+      <div class="meta-item">
+        <dt>Dates</dt>
+        <dd>{{ page.dates }}</dd>
+      </div>
+      <div class="meta-item">
+        <dt>Place</dt>
+        <dd>{{ page.place }}</dd>
+      </div>
+      {% if page.scale %}
+      <div class="meta-item">
+        <dt>Scale</dt>
+        <dd>{{ page.scale }}</dd>
+      </div>
+      {% endif %}
+      {% if page.users %}
+      <div class="meta-item">
+        <dt>Users</dt>
+        <dd>{{ page.users }}</dd>
+      </div>
+      {% endif %}
+      {% if page.constraint %}
+      <div class="meta-item meta-wide">
+        <dt>Constraint</dt>
+        <dd>{{ page.constraint }}</dd>
+      </div>
+      {% endif %}
+    </dl>
+  </header>
 
   {% if page.hero %}
-  <figure class="hero">
-    <img src="{{ site.baseurl }}{{ page.hero }}" alt="{{ page.hero_alt | default: page.title }}">
+  <figure class="project-hero">
+    <picture>
+      <source type="image/webp" srcset="{{ page.hero | replace: '.jpg', '.webp' | prepend: site.baseurl }}">
+      <img src="{{ page.hero | prepend: site.baseurl }}" alt="{{ page.hero_alt | default: page.title }}" decoding="async">
+    </picture>
     {% if page.hero_caption %}<figcaption class="caption">{{ page.hero_caption }}</figcaption>{% endif %}
   </figure>
   {% endif %}
 
   <!-- Body: what it is · the problem and the constraint · what I did ·
-       what went wrong · gallery. Filled by the content agent. -->
-  <div class="prose">
-    {{ content }}
+       what went wrong · gallery. Reviewed prose, emitted verbatim; the filter
+       only lazy-loads the in-body images without touching the source. -->
+  <div class="prose measure">
+    {{ content | replace: '<img ', '<img loading="lazy" decoding="async" ' }}
   </div>
 
   {% if page.links %}
-  <div class="links-out prose">
+  <div class="links-out prose measure">
     <h2>Links</h2>
     <ul>
       {% for l in page.links %}
@@ -81,8 +78,8 @@ layout: default
   </div>
   {% endif %}
 
-  <div class="work-foot">
-    <a class="back-link" href="{{ site.baseurl }}/">← back to the map</a>
+  <div class="work-foot measure">
+    <a class="back-link" href="{{ site.baseurl }}/">← All work</a>
   </div>
 
 </article>

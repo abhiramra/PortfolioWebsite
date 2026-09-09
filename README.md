@@ -1,33 +1,62 @@
 # Abhiram Rachamadugu — portfolio
 
-A map-led portfolio that sits alongside the one-page résumé PDF. A recruiter
-reads the PDF in twenty seconds; this is where they go if it made them curious.
+An image-led editorial portfolio that sits alongside the one-page résumé PDF. A
+recruiter reads the PDF in twenty seconds; this is where they go if it made them
+curious.
 
-The organising idea is **a map of where the work happened** — Bengaluru, rural
-Kadapa, a plant at Nelamangala, campuses in India, and Urbana-Champaign,
-Illinois. The map is an **index, not the product**: what sits behind the pins
-matters more than the map itself.
+The organising idea is **breadth of field and adaptability** — ten projects
+spanning aerospace, autonomy, thermal engineering, materials, manufacturing and
+nonprofit operations. The case is made by **the grid itself**: ten tiles,
+obviously unlike each other, all substantial. No thesis statement required.
 
-This file is the handoff for whoever fills in the content. Read it first.
+The home page is three parts: a full-bleed forge **hero**, a flat two-column
+**grid** of the ten projects, and a **footer** of contact details. Each tile
+earns the click; the project pages carry the writing.
 
 ---
 
 ## Ground rules (do not break these)
 
 - **No JavaScript.** No `<script>` tags, no libraries, no analytics, no cookie
-  banner. There is nothing to consent to. `grep -rn "<script" .` must stay empty.
+  banner. `grep -rn "<script" .` over the built site must stay empty.
 - **Jekyll, built natively by GitHub Pages.** No Actions, no Node, no
   `package.json`. Content is Markdown + YAML front matter.
-- **Tone is civilian throughout.** No defence framing, no weapons language, no
-  marketing register. Sentence case everywhere (proper nouns aside); all-caps
-  only in the letterspaced mono metadata labels.
-- **Colour discipline.** `--mark` (the one red) appears only on map pins and
-  prose link underlines. A page with fifteen red things stops reading as a map.
-- **No dark mode.** An old map is a light object.
-- **All internal links use `{{ site.baseurl }}`.** Never hard-code the domain.
+- **Tone is civilian throughout.** No defence framing, no marketing register.
+  **Sentence case everywhere** (proper nouns aside); no Title Case, no all-caps.
+- **One accent.** `--accent` (the one red) appears only on link underlines and
+  focus rings. Never decorative.
+- **No dark mode.** A single warm-neutral light palette; the hero is the most
+  saturated thing on the site by a wide margin, and nothing competes with it.
+- **All internal links and `src`s use `{{ site.baseurl }}`.** The custom domain
+  is not set yet, so never hard-code the host.
 
-`assets/css/main.css` is finished — the design system lives there. You should
-not need to redesign it; add content, don't restyle.
+`assets/css/main.css` is the whole design system. Add content; don't restyle.
+
+---
+
+## Repo layout
+
+```
+_config.yml            site config, the projects collection, contact details
+index.md               home page: hero + two-column grid + footer
+resume.md              the /resume/ page content (entries)
+_data/order.yml        the grid order — a plain list of ten slugs
+_layouts/              default, project, resume
+_includes/             head.html, footer.html, card.html
+_projects/             10 project files  ->  /work/<slug>/
+assets/css/main.css    the design system
+assets/img/<slug>/     per-project images (hero, card, gallery — see below)
+assets/img/home/       the home hero renditions (generated)
+tools/build_images.py  the image pipeline (build-time helper, excluded)
+assets/Abhiram-Rachamadugu-Resume.pdf   the résumé PDF the header links to
+```
+
+Collection and permalink (in `_config.yml`): `projects` → `/work/:name/`, where
+`:name` is the filename without extension, so `_projects/taiyo-aerospace.md`
+publishes at `/work/taiyo-aerospace/`. The `project` layout is auto-assigned by
+`defaults`, so project files need no `layout:` field.
+
+There is **no places collection and no map** — that was the previous design.
 
 ---
 
@@ -41,44 +70,14 @@ jekyll serve
 ```
 
 (There is deliberately no `Gemfile`; if you add one, use the `github-pages`
-gem so local output matches production, and keep `Gemfile`/`Gemfile.lock`
-excluded in `_config.yml`.)
-
----
-
-## Repo layout
-
-```
-_config.yml            site config, collections, permalinks, contact placeholders
-index.md               the home page: map + stat strip + statement + text index
-resume.md              the /resume/ page content (entries)
-_layouts/              default, project, place, resume
-_includes/             head.html, footer.html, map.svg (the whole map, inline)
-_projects/             9 project files  ->  /work/<slug>/
-_places/               3 place files    ->  /place/<slug>/
-assets/css/main.css    the design system
-assets/img/<slug>/     one dir per project — drop images here (currently empty)
-assets/Abhiram-Rachamadugu-Resume.pdf   PLACEHOLDER — replace with the real PDF
-```
-
-Collections and permalinks (already set in `_config.yml`):
-
-```yaml
-collections:
-  projects: { output: true, permalink: /work/:name/ }
-  places:   { output: true, permalink: /place/:name/ }
-```
-
-`:name` is the filename without extension, so `_projects/taiyo-aerospace.md`
-publishes at `/work/taiyo-aerospace/`. Layouts are auto-assigned by `defaults`,
-so collection files need no `layout:` field.
+gem so local output matches production, and keep it excluded in `_config.yml`.)
 
 ---
 
 ## How to add or edit a project
 
-Create `_projects/<slug>.md`. **Every field is present on every file**; use
-`null` rather than omitting one. Copy this block:
+Create `_projects/<slug>.md`. Copy this front matter; use `null` rather than
+omitting a field:
 
 ```yaml
 ---
@@ -88,184 +87,113 @@ org: "Organisation"
 role: "Your role"             # null for personal work
 status: in-service            # in-service | in-build | ongoing | archived | worked-on-site
 place: "Town, region"
-coords: [14.47, 78.82]        # [lat, lon]; lon negative for west
+coords: [14.47, 78.82]        # legacy/unused (the map is gone); harmless to keep
 dates: "Aug 2021 – Mar 2023"
 scale: "30+ units"            # honest counter, or null
 users: "Who it serves"        # or null
 constraint: "The binding constraint"   # or null
-depth: deep                   # deep | medium | thin  (how long the page should be)
+depth: deep                   # deep | medium | thin
 hero: /assets/img/my-project/hero.jpg
+hero_alt: "Describe the hero image."
+hero_caption: "Optional caption under the hero."
 tags: [thermal, deployed]     # or null
-order: 5                      # sort position in the home list
+card_line: "One sentence, <=90 chars, that earns the click."
+card_image: /assets/img/my-project/card.jpg   # null -> a graceful placeholder tile
+card_alt: "Alt for the card image, only if it differs from the hero crop."
 ---
 ```
 
 Two fields carry the most weight and the layout gives them prominence:
 
-- **`role`** — a pin silently implies ownership. "Engineering intern, three
-  months" reads very differently from a founder line. Be precise; one inflated
-  entry makes a reader discount all of them.
-- **`status`** — `in-build` is not `in-service`. Label honestly so the deployed
-  entries read as trustworthy. The values: `in-service` (deployed and running),
-  `in-build` (being built, not yet deployed), `ongoing` (a continuing practice
-  that is neither deployed nor archived), `archived` (finished, not maintained),
-  `worked-on-site` (a role at someone else's site). Each has a status-tag style
-  in `main.css`.
+- **`role`** — be precise; `in-build` is not `in-service`, intern is not
+  founder. One inflated entry makes a reader discount all of them.
+- **`status`** — label honestly so the deployed entries read as trustworthy:
+  `in-service`, `in-build`, `ongoing`, `archived`, `worked-on-site`.
+
+### The card (home grid)
+
+Each tile shows **image · title · one mono metadata line (`status · dates`) ·
+one sentence (`card_line`)** — no prose. The whole card is the link. Keep
+`card_line` to one sentence, ≤ 90 chars, sentence case. If `card_image` is
+`null` the tile renders a hairline placeholder that reads "image pending".
+
+### The grid order
+
+`_data/order.yml` is the single source of truth for the grid — a plain list of
+ten slugs, read left-to-right then down so each pair sits as siblings. Reorder
+there; the project files carry no `order` field.
 
 ### Project body structure
 
-The Markdown body fills, in this order (headings already stubbed in each file):
-
-1. What it is
-2. The problem and the constraint
-3. What I did
-4. What went wrong
-5. Gallery
-
-Images go in `assets/img/<slug>/`. Lay a gallery out with the `.gallery` grid:
+The Markdown body fills, in this order: **What it is · The problem and the
+constraint · What I did · What went wrong · Gallery** (some pages omit a section
+for honest reasons — see the bodies). Gallery images use plain figures; the
+`project` layout lazy-loads every in-body image automatically, so the bodies
+stay clean:
 
 ```html
-<div class="gallery">
-  <figure><img src="{{ site.baseurl }}/assets/img/my-project/1.jpg" alt="…">
-    <figcaption class="caption">Caption.</figcaption></figure>
-</div>
+<figure>
+  <img src="{{ site.baseurl }}/assets/img/my-project/1.jpg" alt="…">
+  <figcaption>Caption.</figcaption>
+</figure>
 ```
 
-**Video:** never self-host, never embed an iframe. Use a static poster image
-inside a link to YouTube (the `.video-poster` class adds the “watch” overlay):
-
-```html
-<a class="video-poster" href="https://youtu.be/ID" rel="noopener">
-  <img src="{{ site.baseurl }}/assets/img/my-project/poster.jpg" alt="…">
-</a>
-```
+**Video:** never self-host, never embed an iframe. Link out to YouTube with a
+static poster image (`.video-poster` adds a play overlay), or a plain text link.
 
 Optional end-of-page links: add a `links:` list to the front matter
-(`- { label: "Repo", url: "https://…" }`) and the layout renders a Links block.
+(`- { label: "Repo", url: "https://…" }`).
 
 ---
 
-## How to add or edit a place
+## Images
 
-`_places/<slug>.md` needs a title, coords, and the list of project slugs it
-contains. The “Work here” list is generated from that list:
+The pipeline is `tools/build_images.py` (needs Pillow). It reads the reviewed,
+EXIF-stripped sources in `assets/img/<slug>/` and writes the **derived** files
+only — it never touches a source:
 
-```yaml
----
-title: "Bengaluru"
-slug: bengaluru
-coords: [12.97, 77.59]
-projects: [taiyo-aerospace, ati-motors-amr, abb-tata-motors]
----
+- **Cards** — one 3:2 ratio for every tile (1200×800), crop-to-fill, a light
+  unifying grade (subtle contrast + slight desaturation) so ten wildly different
+  sources read as one set. WebP + JPEG.
+- **Home hero** — the Gifu, Japan forge photograph, art-directed into a desktop
+  16:10 crop and a mobile 4:5 crop, graded, WebP + JPEG, in `assets/img/home/`.
+- **Project heroes** — a WebP sibling next to each `hero.jpg`; the layout serves
+  it through `<picture>` with the JPEG as fallback.
+
+Rules that still apply, per the brief: no identifiable photographs of Children
+for Children recipients or of the Kadapa farmers; strip EXIF from every image
+(the pipeline never writes it back); Ati Motors product/AMR footage only; Taiyo
+the supplied render only. Re-run the pipeline after changing any source:
+
+```bash
+python tools/build_images.py
 ```
-
-There are three places: `bengaluru`, `kadapa`, `urbana-champaign`.
 
 ---
 
 ## The résumé
 
-`resume.md` uses the `resume` layout and is styled as a printed record (ruled
-sections, mono dates in a right-hand column). The experience/project entries are
-pre-filled **only** with the role/org/dates/place already fixed by the brief;
-every bullet, the summary, education and skills are marked `_placeholder_` and
-must be **transcribed faithfully from the PDF** — do not rewrite or reorder.
-
-Then **replace `assets/Abhiram-Rachamadugu-Resume.pdf`** (currently a marked
-placeholder) with the real one-page PDF so the download button resolves.
+`resume.md` uses the `resume` layout (ruled sections, mono dates). It is
+transcribed faithfully from `assets/Abhiram-Rachamadugu-Resume.pdf`; the header's
+download button links to that PDF.
 
 ---
 
 ## Contact
 
-Footer only — no form (there is no backend). The values are placeholders in
-`_config.yml` under `contact:` (`email`, `phone`, `linkedin`). Nothing is
-published until you fill them in.
+Footer only — no form (GitHub Pages has no backend). Values live in `_config.yml`
+under `contact:` (`email`, `phone_in`, `phone_us`, `linkedin`, `github`,
+`location`) and `resume_pdf`.
 
 ---
-
-## The map — how it maps to the collections
-
-`_includes/map.svg` is the whole map: **hand-authored inline SVG, committed, no
-runtime library, no JavaScript.** It is included into `index.md`. Interaction is
-CSS-only (hover, focus) and the styling lives in `main.css` (search `--- Map SVG`).
-
-Every pin is a link and every destination is **also** in the plain text list
-below the map, so the site is fully navigable — and keyboard-accessible —
-without touching the map. Keep that invariant.
-
-### Pin inventory
-
-| Pin | Tier | Panel | Links to |
-|---|---|---|---|
-| Bengaluru | primary (worked) | South India + inset | `/place/bengaluru/` |
-| Kadapa | primary (worked) | South India | `/place/kadapa/` |
-| Nelamangala | primary (worked) | inset | `/work/abb-tata-motors/` |
-| Urbana-Champaign | primary (worked) | Illinois | `/place/urbana-champaign/` |
-| Christ College | deployment | inset | `/work/ati-motors-amr/` |
-| VIT Coimbatore | deployment | South India | `/work/ati-motors-amr/` |
-| Kadapa dryer area | deployment area (30 km circle) | South India | `/work/solar-biomass-dryer/` |
-
-Tulsa, Oklahoma (SUAS competition) is deliberately a **text mention on the
-Illini project page only** — no pin.
-
-Primary pins are 7px filled `--mark`; deployment pins are 4px open `--mark-soft`;
-the deployment *area* is a dashed 30 km-radius circle (a distribution, not a
-point). To retarget a pin, edit its `<a href="{{ site.baseurl }}/…">` in
-`map.svg`. To restyle any tier, edit `main.css` — do not add inline styles.
-
-### How the geometry was made (so you can reproduce it)
-
-The map was generated **once** by a throwaway script, then the output was
-committed and the script deleted (per the brief — the repo never needs Node).
-If you ever need to regenerate or add a pin at a precise coordinate, reproduce
-the same setup:
-
-- **Data:** Natural Earth `ne_50m_admin_1_states_provinces` (Indian states +
-  Illinois, filtered by bounding-box overlap with each panel window) and the
-  Plotly `geojson-counties-fips` file (Champaign County = FIPS `17019`).
-- **Projection:** `d3-geo` `geoMercator`, fit **per panel** to a lon/lat window
-  (fit the window rectangle, not the geometry bounds, then clip geography to the
-  neat line). Project each pin's `[lon,lat]` with that **same** panel projection
-  so pins land correctly. Round all coordinates to 1 decimal place.
-- **Panel windows** (`[[W,S],[E,N]]`, degrees):
-  - South India — `[[76.0, 10.5], [79.5, 15.0]]`
-  - Greater Bengaluru inset — `[[77.28, 12.82], [77.78, 13.22]]`
-  - Illinois — `[[-91.6, 36.8], [-87.0, 42.7]]`
-- **Master frame:** `viewBox="0 0 1000 700"`. South India is translated to
-  `(75, 60)`, Illinois to `(≈590, 60)`; the inset is nested inside the South
-  India group in its bottom-right corner. The inset's location on the main panel
-  is shown by the dashed **locator rectangle** and two leader lines — standard
-  survey-sheet practice, and it keeps the Nelamangala/Bengaluru labels from
-  colliding at the main panel's scale.
-
-Moving an existing label is just editing its `x`/`y` numbers. Adding a pin at a
-new coordinate means projecting that coordinate the same way — quickest via a
-scratch d3-geo script using the window and translate above.
-
-### Cartographic conventions used (keep them)
-
-- Serif **italic** for regions/districts (Karnataka, Andhra Pradesh, …),
-  serif **roman** for settlements (Bengaluru, Kadapa, …), **mono** for metadata
-  (coordinates, degree ticks, scale bars, deployment labels).
-- A 1px graticule behind each panel, degree ticks at the frame edges, an honest
-  per-panel scale bar (the panels are at different scales — saying so is the
-  point), and a double-rule neat line around each panel.
-- `role="img"` on the root `<svg>` with `<title>`/`<desc>`; the text index is
-  the accessible path.
-
----
-
-## Responsive
-
-Below 700px the interactive map is hidden and the text index carries navigation
-(three survey panels are unusable on a phone). Everything is usable at 390px.
 
 ## Before you ship
 
-- `grep -rn "<script" .` returns nothing.
-- Every pin is reachable and activatable by keyboard alone.
-- Every page is reachable without touching the map.
-- 390px viewport is usable.
-- No hard-coded absolute URLs — `{{ site.baseurl }}` throughout.
+- `grep -rn "<script" _site` returns nothing.
+- No EXIF on any published image.
+- Every card is a link across its full area, and keyboard-reachable.
+- 390 px viewport is usable; the grid collapses to one column.
+- Uniform card heights, even with a two-line title.
+- Hero text stays legible against the dark photograph.
+- No absolute URLs — `{{ site.baseurl }}` throughout.
 - Pages builds green.

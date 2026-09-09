@@ -15,7 +15,8 @@ hero: "/assets/img/solar-biomass-dryer/hero.jpg"
 hero_alt: "Two dryers on a rural plot, each a tall brick drying chamber with an inclined glazed solar collector running down to ground level. A mason stands on top of the nearer chamber; a stack of firewood sits alongside and turkeys forage in the yard."
 hero_caption: "Two units in a yard in Kadapa district. The woodpile is the other half of the design — that is the biomass side of the fuel — and the mason on top is the reason the thing is buildable at all."
 tags: ["thermal", "simulation", "deployed"]
-order: 3
+card_line: "A sub-$200 solar and biomass crop dryer, 30+ built with farmers in Kadapa."
+card_image: /assets/img/solar-biomass-dryer/card.jpg
 ---
 
 ## What it is

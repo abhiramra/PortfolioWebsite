@@ -1,0 +1,13 @@
+# Home-grid order — the single source of truth for how the grid reads.
+# Left-to-right then down, so each pair sits as siblings. Reorder here; the
+# ten project files carry no order field of their own.
+- taiyo-aerospace            # 1  ·  left
+- illini-autonomous-vehicles # 1  ·  right
+- ati-motors-amr             # 2  ·  left
+- solar-biomass-dryer        # 2  ·  right
+- bionic-arm                 # 3  ·  left
+- children-for-children      # 3  ·  right
+- abb-tata-motors            # 4  ·  left
+- bladesmithing              # 4  ·  right
+- pneumatic-exoskeleton      # 5  ·  left
+- machani-robotics           # 5  ·  right

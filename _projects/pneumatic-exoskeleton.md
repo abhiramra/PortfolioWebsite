@@ -13,7 +13,9 @@ constraint: "Metal tubing, off-the-shelf pneumatic cylinders, built in a month"
 depth: "deep"
 hero: null
 tags: ["pneumatics", "mechanism design", "Arduino", "fabrication"]
-order: 8
+card_line: "A pneumatic exoskeleton of tubing and cylinders, built to lift 80 kg."
+card_image: /assets/img/pneumatic-exoskeleton/card.jpg
+card_alt: "Abhiram wearing the pneumatic exoskeleton on a terrace, lifting a weighted bar."
 ---
 
 ## What it is

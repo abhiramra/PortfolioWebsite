@@ -15,7 +15,9 @@ hero: "/assets/img/ati-motors-amr/hero.jpg"
 hero_alt: "The light-duty AMR on a bench: a faceted chassis in cream and black with sensor cutouts on the top deck."
 hero_caption: "The chassis. Faceted rather than curved, which is what makes it manufacturable in small numbers."
 tags: ["ROS 2", "autonomous mobile robots", "deployment", "field support"]
-order: 5
+card_line: "A light-duty autonomous mobile robot, taken from ROS 2 code to field support."
+card_image: /assets/img/ati-motors-amr/card.jpg
+card_alt: "An Ati autonomous mobile robot on a plant floor, a pallet stack behind it."
 ---
 
 ## What it is

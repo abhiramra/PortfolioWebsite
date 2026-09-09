@@ -15,7 +15,8 @@ hero: "/assets/img/bionic-arm/hero.jpg"
 hero_alt: "The bionic hand standing on a white cloth: orange printed fingers and tendon guides above a white forearm brace, with servos, wiring and a battery connector on the outside of the brace."
 hero_caption: "The hand with the servo bank and wiring exposed on the brace."
 tags: ["3D printing", "materials testing", "print-in-place", "embedded ML"]
-order: 7
+card_line: "A 3D-printed bionic hand under $200, its materials chosen by breaking them."
+card_image: /assets/img/bionic-arm/card.jpg
 ---
 
 ## What it is

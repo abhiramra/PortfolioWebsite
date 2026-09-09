@@ -2,64 +2,32 @@
 layout: default
 title: "Home"
 permalink: /
+no_masthead: true
 ---
 
-<section class="home-head wrap-wide">
-  <h1>{{ site.author }}</h1>
-  <p class="tagline">{{ site.tagline }}</p>
+<section class="hero" aria-label="Introduction">
+  <picture class="hero-media">
+    <source media="(max-width: 700px)" type="image/webp" srcset="{{ site.baseurl }}/assets/img/home/hero-mobile.webp">
+    <source media="(max-width: 700px)" srcset="{{ site.baseurl }}/assets/img/home/hero-mobile.jpg">
+    <source type="image/webp" srcset="{{ site.baseurl }}/assets/img/home/hero-desktop.webp">
+    <img class="hero-img"
+         src="{{ site.baseurl }}/assets/img/home/hero-desktop.jpg"
+         alt="Abhiram at a forge in a master smith's workshop in Gifu, Japan, a fountain of orange sparks rising from the hearth beside him."
+         width="1600" height="1000" fetchpriority="high" decoding="async">
+  </picture>
+
+  <a class="hero-resume mono" href="{{ site.baseurl }}/resume/">Résumé <span aria-hidden="true">→</span></a>
+
+  <div class="hero-caption wrap">
+    <h1 class="hero-name">{{ site.author }}</h1>
+    <p class="hero-tagline">{{ site.tagline }}</p>
+    <p class="hero-credit mono">Forge of Asano Kajiya · Gifu, Japan · 2024</p>
+  </div>
 </section>
 
-<div class="map-wrap">
-  <figure class="map-figure">
-    {% include map.svg %}
-    <figcaption class="map-caption caption">
-      A map of where the work happened. Large pins mark where the work was done;
-      small open circles and the dotted area mark where it was deployed. Select a
-      pin, or use the list below — the site is fully navigable without the map.
-    </figcaption>
-  </figure>
-</div>
-
-<section class="stats" aria-label="By the numbers">
-  <div class="stat"><span class="num">30+</span><span class="lab">dryers in service</span></div>
-  <div class="stat"><span class="num">3</span><span class="lab">robots deployed</span></div>
-  <div class="stat"><span class="num">1,090</span><span class="lab">scholarships</span></div>
-  <div class="stat"><span class="num">2</span><span class="lab">aircraft in build</span></div>
-</section>
-
-<div class="statement">
-  <p>I build hardware in places that make it hard — a forge dug into the ground in Kadapa, a bionic hand held under $200, a jet airframe laid up in a home lab. The constraint is usually the interesting part, because it decides the architecture long before any preference does. What is here is ten of those projects, including the parts that did not work.</p>
-</div>
-
-<section class="index-block">
-  <h2>The work</h2>
-  <p class="index-note">Every project, in one plain list — the accessible path and the mobile fallback.</p>
-  <ul class="linklist">
-    {% assign items = site.projects | sort: "order" %}
-    {% for p in items %}
-    <li>
-      <a href="{{ p.url | prepend: site.baseurl }}">
-        <span class="li-title">{{ p.title }}</span>
-        <span class="li-org">{{ p.org }}</span>
-        <span class="li-meta">{{ p.status | replace: '-', ' ' }} · {{ p.dates }}</span>
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
-</section>
-
-<section class="index-block">
-  <h2>Places</h2>
-  <p class="index-note">The clusters the map is built around.</p>
-  <ul class="linklist">
-    {% assign pls = site.places | sort: "title" %}
-    {% for pl in pls %}
-    <li>
-      <a href="{{ pl.url | prepend: site.baseurl }}">
-        <span class="li-title">{{ pl.title }}</span>
-        <span class="li-meta">{{ pl.projects | size }} entr{% if pl.projects.size == 1 %}y{% else %}ies{% endif %}</span>
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
+<section class="work wrap" aria-label="Selected work">
+  {% for slug in site.data.order %}
+    {% assign p = site.projects | where: "slug", slug | first %}
+    {% if p %}{% include card.html p=p %}{% endif %}
+  {% endfor %}
 </section>

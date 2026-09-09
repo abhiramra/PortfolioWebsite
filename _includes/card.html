@@ -1,0 +1,29 @@
+{%- comment -%}
+  One grid tile. Expects `p` = a project document.
+  The whole card is the link target: a stretched pseudo-element over the card
+  carries the click, while the accessible link name stays the title alone.
+  Image · title · one mono metadata line · one sentence. No prose.
+{%- endcomment -%}
+<article class="card">
+  <div class="card-frame">
+    {%- if p.card_image -%}
+    <picture>
+      <source type="image/webp" srcset="{{ p.card_image | replace: '.jpg', '.webp' | prepend: site.baseurl }}">
+      <img class="card-img" src="{{ p.card_image | prepend: site.baseurl }}"
+           alt="{{ p.card_alt | default: p.hero_alt | default: p.title }}"
+           width="1200" height="800" loading="lazy" decoding="async">
+    </picture>
+    {%- else -%}
+    <div class="card-placeholder">
+      <span class="mono">image pending</span>
+    </div>
+    {%- endif -%}
+  </div>
+  <div class="card-body">
+    <h2 class="card-title">
+      <a class="card-link" href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a>
+    </h2>
+    <p class="card-meta mono">{{ p.status | replace: '-', ' ' }} <span class="dot">·</span> {{ p.dates }}</p>
+    <p class="card-line">{{ p.card_line }}</p>
+  </div>
+</article>
