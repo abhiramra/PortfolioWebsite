@@ -104,7 +104,7 @@ for slug, src, va, ha in CARDS:
 print("\nHome hero (forge, Gifu Japan):")
 home = os.path.join(IMG, "home"); os.makedirs(home, exist_ok=True)
 src = load(os.path.join(IMG, "bladesmithing", "gifu-workshop.jpg"))     # 1100x1467
-d = grade(crop_fill(src, 16/10, v_anchor=0.28).resize((1600, 1000), Image.LANCZOS))
+d = grade(crop_fill(src, 3/2, v_anchor=0.44).resize((1500, 1000), Image.LANCZOS))
 save_pair(d, os.path.join(home, "hero-desktop"), jpg_q=88, webp_q=82)
 m = grade(crop_fill(src, 4/5, v_anchor=0.06).resize((1080, 1350), Image.LANCZOS))
 save_pair(m, os.path.join(home, "hero-mobile"), jpg_q=88, webp_q=82)
