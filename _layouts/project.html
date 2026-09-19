@@ -17,10 +17,12 @@ layout: default
         <dt>Status</dt>
         <dd><span class="status">{{ page.status | replace: '-', ' ' }}</span></dd>
       </div>
+      {% if page.org %}
       <div class="meta-item">
         <dt>Organisation</dt>
         <dd>{{ page.org }}</dd>
       </div>
+      {% endif %}
       <div class="meta-item">
         <dt>Dates</dt>
         <dd>{{ page.dates }}</dd>
