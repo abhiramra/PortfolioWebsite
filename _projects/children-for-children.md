@@ -28,7 +28,7 @@ The first was COVID-19 relief. It raised $120,000 and put food packets in the ha
 
 The second, launched in 2021, is a scholarship programme for children orphaned by the pandemic. It has awarded $150,000 to date to 1,090 children. It is still running: I manage the fundraising, the selection and the disbursement.
 
-Those are two different numbers doing two different jobs, and it is worth being explicit about that, because they are often read as one figure that does not add up.
+Those are two different numbers doing two different jobs, and they are often read as one figure that does not add up.
 
 The third strand is teaching. In September 2024 the programme selected twenty-five sixth-grade girls from Municipal High School (Main) in Kadapa for intensive coaching in mathematics and computing, run with the school and with Aarti. It was covered by *The Hans India* that month.
 

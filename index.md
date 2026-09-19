@@ -26,7 +26,7 @@ no_masthead: true
 </section>
 
 <section class="highlights wrap" aria-label="Highlights">
-  <p class="highlights-lead">Most of it designed, built by hand, and taken into the field — often where the budget is thin and the constraint is the point.</p>
+  <p class="highlights-lead">Most of it designed, built by hand, and taken into the field, usually on a thin budget.</p>
   <ul class="highlights-list">
     {% for h in site.data.highlights %}
     <li class="highlight">

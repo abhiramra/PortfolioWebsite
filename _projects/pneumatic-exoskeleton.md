@@ -26,7 +26,7 @@ I filmed the whole build as a three-part series, and the videos are a better rec
 
 ## The problem and the constraint
 
-This was built in Kadapa in July 2020, during the lockdown, out of metal tubing and commodity pneumatic parts. Pneumatics for two reasons. The first is availability: it was what could be had in Kadapa in the middle of a lockdown, and a part you cannot buy is not a design option. The second is that I wanted the actuation to be *fast*. Air is compressible, which makes it hard to hold a position accurately, but it moves quickly and it takes shock well — and for an arm that is supposed to help you lift something, speed matters more than precision. The whole architecture follows from that actuator choice rather than the other way round.
+This was built in Kadapa in July 2020, during the lockdown, out of metal tubing and commodity pneumatic parts. Pneumatics for two reasons. The first is availability: it was what could be had in Kadapa in the middle of a lockdown, and a part you cannot buy is not a design option. The second is that I wanted the actuation to be fast. Air is compressible, which makes it hard to hold a position accurately, but it moves quickly and it takes shock well — and for an arm that is supposed to help you lift something, speed matters more than precision. The whole architecture follows from that actuator choice rather than the other way round.
 
 Which makes the geometry the hard part. A pneumatic cylinder gives you a straight push over a fixed stroke; an elbow needs a rotation through a large angle. Getting one from the other means placing the cylinder's anchor points so the moment arm stays adequate across the whole range of motion, while the stroke is long enough to cover that range, while the cylinder does not foul the arm at either end. Those three requirements fight each other and the window where all three hold is narrow. On a build with no analysis behind it, finding that window is the entire job.
 
@@ -46,7 +46,7 @@ The honest answer is that this is the most junior thing on the site and it shows
 
 It also never got where it was going. The arms were meant to be the first stage of a full-body exoskeleton, legs included, and I never built the rest. Some of that is that the leg problem is genuinely much harder — an arm reacts its load into your torso, legs react theirs into the ground, and that means load paths, balance and a failure mode where the thing falls over with you inside it. Most of it is that the lockdown ended and I moved on to other projects.
 
-What it did teach me is the thing I have used ever since: on a build like this the actuator is not chosen after the design, it *is* the design, and picking it by what you can actually get hold of in the place you are standing is a legitimate engineering decision rather than a compromise.
+What it did teach me is the thing I have used ever since: on a build like this the actuator is not chosen after the design, it is the design, and picking it by what you can actually get hold of in the place you are standing is a legitimate engineering decision rather than a compromise.
 
 ## Gallery
 
