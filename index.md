@@ -25,6 +25,18 @@ no_masthead: true
   </div>
 </section>
 
+<section class="highlights wrap" aria-label="Highlights">
+  <p class="highlights-lead">Most of it designed, built by hand, and taken into the field — often where the budget is thin and the constraint is the point.</p>
+  <ul class="highlights-list">
+    {% for h in site.data.highlights %}
+    <li class="highlight">
+      <span class="highlight-label mono">{{ h.label }}</span>
+      <p class="highlight-text">{{ h.text }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+
 <section class="work wrap" aria-label="Selected work">
   {% for slug in site.data.order %}
     {% assign p = site.projects | where: "slug", slug | first %}

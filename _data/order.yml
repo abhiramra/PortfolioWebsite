@@ -1,13 +1,17 @@
 # Home-grid order — the single source of truth for how the grid reads.
 # Left-to-right then down, so each pair sits as siblings. Reorder here; the
-# ten project files carry no order field of their own.
-- taiyo-aerospace            # 1  ·  left
-- illini-autonomous-vehicles # 1  ·  right
-- ati-motors-amr             # 2  ·  left
-- solar-biomass-dryer        # 2  ·  right
-- bionic-arm                 # 3  ·  left
-- children-for-children      # 3  ·  right
-- abb-tata-motors            # 4  ·  left
-- bladesmithing              # 4  ·  right
-- pneumatic-exoskeleton      # 5  ·  left
-- machani-robotics           # 5  ·  right
+# project files carry no order field of their own.
+#
+# NOTE: 11 projects (odd) — the last row holds a single card (machani).
+# Add or drop one to make the rows even, or reorder as you like.
+- taiyo-aerospace                 # 1  ·  left
+- illini-autonomous-vehicles      # 1  ·  right
+- forward-deployed-engineering    # 2  ·  left
+- ati-motors-amr                  # 2  ·  right
+- solar-biomass-dryer             # 3  ·  left
+- bionic-arm                      # 3  ·  right
+- children-for-children           # 4  ·  left
+- abb-tata-motors                 # 4  ·  right
+- bladesmithing                   # 5  ·  left
+- pneumatic-exoskeleton           # 5  ·  right
+- machani-robotics                # 6  ·  lone last card

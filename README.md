@@ -4,13 +4,13 @@ An image-led editorial portfolio that sits alongside the one-page résumé PDF. 
 recruiter reads the PDF in twenty seconds; this is where they go if it made them
 curious.
 
-The organising idea is **breadth of field and adaptability** — ten projects
+The organising idea is **breadth of field and adaptability** — eleven projects
 spanning aerospace, autonomy, thermal engineering, materials, manufacturing and
-nonprofit operations. The case is made by **the grid itself**: ten tiles,
+nonprofit operations. The case is made by **the grid itself**: eleven tiles,
 obviously unlike each other, all substantial. No thesis statement required.
 
 The home page is three parts: a full-bleed forge **hero**, a flat two-column
-**grid** of the ten projects, and a **footer** of contact details. Each tile
+**grid** of the eleven projects, and a **footer** of contact details. Each tile
 earns the click; the project pages carry the writing.
 
 ---
@@ -40,10 +40,10 @@ earns the click; the project pages carry the writing.
 _config.yml            site config, the projects collection, contact details
 index.md               home page: hero + two-column grid + footer
 resume.md              the /resume/ page content (entries)
-_data/order.yml        the grid order — a plain list of ten slugs
+_data/order.yml        the grid order — a plain list of project slugs
 _layouts/              default, project, resume
 _includes/             head.html, footer.html, card.html
-_projects/             10 project files  ->  /work/<slug>/
+_projects/             11 project files  ->  /work/<slug>/
 assets/css/main.css    the design system
 assets/img/<slug>/     per-project images (hero, card, gallery — see below)
 assets/img/home/       the home hero renditions (generated)
@@ -120,7 +120,7 @@ one sentence (`card_line`)** — no prose. The whole card is the link. Keep
 ### The grid order
 
 `_data/order.yml` is the single source of truth for the grid — a plain list of
-ten slugs, read left-to-right then down so each pair sits as siblings. Reorder
+the project slugs, read left-to-right then down so each pair sits as siblings. Reorder
 there; the project files carry no `order` field.
 
 ### Project body structure
@@ -153,7 +153,7 @@ EXIF-stripped sources in `assets/img/<slug>/` and writes the **derived** files
 only — it never touches a source:
 
 - **Cards** — one 3:2 ratio for every tile (1200×800), crop-to-fill, a light
-  unifying grade (subtle contrast + slight desaturation) so ten wildly different
+  unifying grade (subtle contrast + slight desaturation) so wildly different
   sources read as one set. WebP + JPEG.
 - **Home hero** — the Gifu, Japan forge photograph, art-directed into a desktop
   16:10 crop and a mobile 4:5 crop, graded, WebP + JPEG, in `assets/img/home/`.

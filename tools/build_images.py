@@ -109,6 +109,17 @@ save_pair(d, os.path.join(home, "hero-desktop"), jpg_q=88, webp_q=82)
 m = grade(crop_fill(src, 4/5, v_anchor=0.06).resize((1080, 1350), Image.LANCZOS))
 save_pair(m, os.path.join(home, "hero-mobile"), jpg_q=88, webp_q=82)
 
+# forward-deployed-engineering: the draw.io water network. A diagram, not a
+# photo, so no unifying grade — keep it crisp. Full landscape hero + a 3:2 card.
+print("\nForward-deployed engineering (draw.io water network):")
+fde = load(os.path.join(ROOT, "tools/sources/forward-deployed-engineering.jpg"))
+fded = os.path.join(IMG, "forward-deployed-engineering"); os.makedirs(fded, exist_ok=True)
+hw = 1600
+save_pair(fde.resize((hw, round(fde.height * hw / fde.width)), Image.LANCZOS),
+          os.path.join(fded, "hero"), jpg_q=88, webp_q=82)
+save_pair(crop_fill(fde, 3/2, v_anchor=0.5).resize((1200, 800), Image.LANCZOS),
+          os.path.join(fded, "card"), jpg_q=86, webp_q=80)
+
 # 3. PROJECT HERO WebP siblings (JPEG stays as fallback; no grade, no resize)
 print("\nProject hero WebP siblings:")
 for slug in [s for s, *_ in CARDS]:
