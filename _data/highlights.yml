@@ -1,10 +1,7 @@
-# Home-page highlights — a qualitative summary shown just below the hero.
-# Not a stats strip; each item is a short label + one sentence. Edit freely.
-- label: "Aerospace"
-  text: "Founded Taiyo Aerospace to build a jet-powered autonomous aircraft for civilian search and rescue."
-- label: "Autonomy & robotics"
-  text: "Leads fixed-wing R&D on a university autonomous-drone team, and shipped autonomous mobile robots to customers in the field."
-- label: "Low-cost hardware"
-  text: "Designs low-cost thermal and assistive hardware — solar–biomass crop dryers, a printed bionic hand — for places with no grid and little money."
-- label: "Community work"
-  text: "Runs Children for Children, a scholarship programme for children orphaned by the pandemic."
+# Home-page highlights — a bulleted list of concrete achievements, below the hero.
+# Plain strings; reorder, edit or trim freely.
+- "Founded Taiyo Aerospace, an autonomous-aircraft startup"
+- "Co-founded Illini Autonomous Vehicles, UIUC's autonomous-drone team"
+- "Finalist, IRIS National Fair"
+- "Spoke and published at World Sustainable Energy Days (WSED), Austria"
+- "Published in GRIHA's Shashwat magazine"

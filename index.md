@@ -26,13 +26,9 @@ no_masthead: true
 </section>
 
 <section class="highlights wrap" aria-label="Highlights">
-  <p class="highlights-lead">Most of it designed, built by hand, and taken into the field, usually on a thin budget.</p>
   <ul class="highlights-list">
     {% for h in site.data.highlights %}
-    <li class="highlight">
-      <span class="highlight-label mono">{{ h.label }}</span>
-      <p class="highlight-text">{{ h.text }}</p>
-    </li>
+    <li>{{ h }}</li>
     {% endfor %}
   </ul>
 </section>

@@ -168,7 +168,7 @@ a:hover { text-decoration-thickness: 2px; }
 .hero-tagline {
   margin: 0.7rem 0 0;
   font-size: clamp(1.02rem, 1.8vw, 1.4rem);
-  line-height: 1.4; color: rgba(251,247,241,.9); max-width: 34ch;
+  line-height: 1.4; color: rgba(251,247,241,.9); max-width: 46ch;
   text-shadow: 0 1px 20px rgba(0,0,0,.4);
 }
 .hero-credit {
@@ -190,18 +190,19 @@ a:hover { text-decoration-thickness: 2px; }
   color: var(--ink);
 }
 .highlights-list {
-  list-style: none; margin: 0; padding: clamp(1.75rem, 3vw, 2.25rem) 0 0;
-  border-top: 1px solid var(--rule);
+  list-style: none; margin: 0; padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: clamp(1.6rem, 3vw, 2.5rem);
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
 }
-.highlight { margin: 0; }
-.highlight-label {
-  display: block; margin-bottom: 0.55rem;
-  font-size: 0.72rem; letter-spacing: 0.04em; color: var(--ink-faint);
+.highlights-list li {
+  position: relative; margin: 0; padding-left: 1.35em;
+  font-size: 1.05rem; line-height: 1.5; color: var(--ink);
 }
-.highlight-text { margin: 0; font-size: 1rem; line-height: 1.5; color: var(--ink-soft); }
+.highlights-list li::before {
+  content: ""; position: absolute; left: 0; top: 0.62em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--ink-faint);
+}
 
 /* 6  WORK GRID & CARDS ----------------------------------------------------- */
 .work {
