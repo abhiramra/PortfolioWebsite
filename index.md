@@ -16,8 +16,6 @@ no_masthead: true
          width="1600" height="1000" fetchpriority="high" decoding="async">
   </picture>
 
-  <a class="hero-resume mono" href="{{ site.baseurl }}/resume/">Résumé <span aria-hidden="true">→</span></a>
-
   <div class="hero-caption wrap">
     <h1 class="hero-name">{{ site.author }}</h1>
     <p class="hero-tagline">{{ site.tagline }}</p>
@@ -31,6 +29,7 @@ no_masthead: true
     <li>{{ h }}</li>
     {% endfor %}
   </ul>
+  <a class="highlights-resume mono" href="{{ site.baseurl }}/resume/">Résumé <span aria-hidden="true">→</span></a>
 </section>
 
 <section class="work wrap" aria-label="Selected work">

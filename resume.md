@@ -2,14 +2,16 @@
 layout: resume
 title: "Résumé"
 role: "Mechanical Engineering — Robotics, Autonomy & Aerospace Systems"
+status_note: "Sponsorship not required — green card in process"
 permalink: /resume/
 ---
 
 <!--
-  Transcribed verbatim from Abhiram-Rachamadugu-Resume.pdf (wording, order,
-  punctuation and capitalisation are the PDF's). Two confirmed deviations:
-  "Founded an startup" → "Founded a startup" (typo being fixed in the PDF), and
-  the Ati Motors title is "New Product Initiatives Intern" throughout.
+  Transcribed from Abhiram_Rachamadugu_Resume.pdf (wording, order, punctuation
+  and capitalisation are the PDF's), with two deliberate departures: "Founded an
+  startup" → "Founded a startup" (grammar fix; the exported PDF still carries the
+  typo), and the web version keeps the Machani Robotics entry and the Media
+  skills line, which the one-page PDF drops for space.
 -->
 
 <section>
@@ -55,6 +57,18 @@ permalink: /resume/
       <li>Founded UIUC's sole autonomous drone engineering team, directing all fixed-wing R&amp;D initiatives.</li>
       <li>Designed and fabricated a custom carbon-fiber monocoque fuselage, maximizing the payload-to-weight ratio for a large-scale UAV.</li>
       <li>Developed a highly stable, tailless flying wing glider, successfully implementing self-stabilizing airfoils to optimize passive flight control.</li>
+    </ul></div>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Forward Deployed Engineer</div>
+    <div class="entry-dates">May 2026 – Present</div>
+    <div class="entry-org">Independent</div>
+    <div class="entry-place">Bengaluru, India</div>
+    <div class="entry-body"><ul>
+      <li>Rebuilt aartiforgirls.org from a JavaScript-heavy build into a static Jekyll site, with a content overhaul.</li>
+      <li>Built a document sorter for LEED and GRIHA certification: Python extraction, LLM classification, Excel output over 10,000+ files.</li>
+      <li>Built a water-balance calculator solving networks of hundreds of flows from a draw.io flowchart.</li>
     </ul></div>
   </div>
 

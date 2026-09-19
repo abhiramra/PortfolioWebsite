@@ -6,10 +6,13 @@ layout: default
   <header class="resume-head">
     <h1 class="resume-name">{{ site.author }}</h1>
     <p class="resume-role mono">{{ page.role | default: "Mechanical engineer" }}</p>
+    {% if page.status_note %}<p class="resume-status mono">{{ page.status_note }}</p>{% endif %}
     <p class="resume-contact mono">
       <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
       <span class="sep">·</span>
       <a href="tel:{{ site.contact.phone_in | remove: ' ' }}">{{ site.contact.phone_in }}</a>
+      <span class="sep">·</span>
+      <a href="tel:{{ site.contact.phone_us | remove: ' ' }}">{{ site.contact.phone_us }}</a>
       <span class="sep">·</span>
       <a href="{{ site.contact.linkedin }}" rel="me noopener">{{ site.contact.linkedin | remove: 'https://www.' | remove: 'https://' }}</a>
       <span class="sep">·</span>
