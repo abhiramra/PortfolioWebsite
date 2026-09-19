@@ -1,7 +1,7 @@
 ---
 layout: resume
 title: "Résumé"
-role: "Mechanical Engineering — Robotics, Autonomy & Aerospace Systems"
+role: "Mechanical Engineering"
 status_note: "Sponsorship not required — green card in process"
 permalink: /resume/
 ---
@@ -61,14 +61,15 @@ permalink: /resume/
   </div>
 
   <div class="entry">
-    <div class="entry-title">Forward Deployed Engineer</div>
+    <div class="entry-title">Independent Consultant</div>
     <div class="entry-dates">May 2026 – Present</div>
-    <div class="entry-org">Independent</div>
-    <div class="entry-place">Bengaluru, India</div>
+    <div class="entry-org">Aarti for Girls, Terra Viridis Consultants LLP</div>
+    <div class="entry-place">Hyderabad, India</div>
     <div class="entry-body"><ul>
-      <li>Rebuilt aartiforgirls.org from a JavaScript-heavy build into a static Jekyll site, with a content overhaul.</li>
-      <li>Built a document sorter for LEED and GRIHA certification: Python extraction, LLM classification, Excel output over 10,000+ files.</li>
-      <li>Built a water-balance calculator solving networks of hundreds of flows from a draw.io flowchart.</li>
+      <li>Optimized internal operations by introducing AI-assisted workflows, leadership frameworks, and student metric tracking.</li>
+      <li>Migrated aartiforgirls.org from a slow JavaScript build to a fast, static Jekyll site, executing a full content redesign.</li>
+      <li>Developed a Python &amp; LLM-powered classification pipeline to extract and process 10,000+ files into Excel for LEED/GRIHA certifications.</li>
+      <li>Created a dynamic water-balance calculator to resolve complex, multi-hundred flow networks from draw.io schematics.</li>
     </ul></div>
   </div>
 
