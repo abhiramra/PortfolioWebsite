@@ -173,6 +173,13 @@ a:hover { text-decoration-thickness: 2px; }
 /* 5b  HIGHLIGHTS (home, below the hero) ------------------------------------ */
 .highlights {
   padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+.highlights-intro {
+  max-width: 79ch;
+  margin: 0 0 clamp(1.5rem, 3vw, 2rem);
+  font-size: 1.05rem; line-height: 1.55; color: var(--ink);
+}
+.highlights-row {
   display: flex; flex-wrap: wrap; align-items: flex-start;
   justify-content: space-between; gap: 1.5rem clamp(2rem, 5vw, 4rem);
 }

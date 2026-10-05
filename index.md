@@ -24,12 +24,15 @@ no_masthead: true
 </section>
 
 <section class="highlights wrap" aria-label="Highlights">
-  <ul class="highlights-list">
-    {% for h in site.data.highlights %}
-    <li>{{ h }}</li>
-    {% endfor %}
-  </ul>
-  <a class="highlights-resume mono" href="{{ site.baseurl }}/resume/">Résumé <span aria-hidden="true">→</span></a>
+  <p class="highlights-intro">I'm a mechanical engineer and a repeat founder, with work across an exceptionally wide range of fields. I'm as comfortable with the bureaucracy and management as with the engineering — which is usually what decides if the engineering is used. A few of the results:</p>
+  <div class="highlights-row">
+    <ul class="highlights-list">
+      {% for h in site.data.highlights %}
+      <li>{{ h }}</li>
+      {% endfor %}
+    </ul>
+    <a class="highlights-resume mono" href="{{ site.baseurl }}/resume/">Résumé <span aria-hidden="true">→</span></a>
+  </div>
 </section>
 
 <section class="work wrap" aria-label="Selected work">
